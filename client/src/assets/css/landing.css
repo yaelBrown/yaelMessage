@@ -1,0 +1,28 @@
+#landing-wrapper {
+  margin: auto;
+  padding: 2rem;
+  border: 2px solid black;
+  width: 30rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#landing-button-row {
+  margin-top: 2rem;
+}
+
+#landing-apple {
+  width: 108px;
+}
+
+#landing-google {
+  width: 139px;
+}
+
+.login-register-btns {
+  margin-right: 1rem;
+  margin-top: 1rem;
+}

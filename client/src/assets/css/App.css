@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+#app-window {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}

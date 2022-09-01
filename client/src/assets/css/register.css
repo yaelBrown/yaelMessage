@@ -1,0 +1,29 @@
+#register-wrapper {
+  margin: auto;
+  padding: 2rem 2em 0em 2em;
+  border: 2px solid black;
+  width: 30rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.register-inputs,
+#register-button-row {
+  margin-top: 1rem;
+}
+
+#register-info-row {
+  min-height: 60px;
+}
+
+#register-loading-pug {
+  width: 60px;
+  margin: auto;
+}
+
+#register-info-row {
+  min-height: 60px;
+}
