@@ -5,7 +5,19 @@ import LoadingPug from '../assets/img/running-pug.gif'
 import Navbar from '../components/dashboard/navbar'
 import ChatList from '../components/dashboard/chatList'
 
-export default function Dashboard() {
+const DashboardLayout = (props) => {
+  return (
+    <>
+      <Navbar />
+      <section id="dashboard-wrapper">
+        <ChatList id="dashboard-chatList" />
+        <main>{props.component}</main>
+      </section>
+    </>
+  )
+}
+
+export default function Dashboard(props) {
   const initialState = {
     isLoading: true
   }
@@ -15,7 +27,6 @@ export default function Dashboard() {
   useEffect(() => {
     setState({ ...state, isLoading: false })
   }, [])
-
 
   // Add useReducer
 
@@ -28,10 +39,7 @@ export default function Dashboard() {
   } else {
     return (
       <>
-      <Navbar/>
-      <section id="dashboard-wrapper">
-        <ChatList id="dashboard-chatList"/>
-      </section>
+        <DashboardLayout component={props.component}/>
       </>
     )
   }

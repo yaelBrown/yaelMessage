@@ -3,6 +3,7 @@ import Landing from './views/landing';
 import Login from './views/login';
 import Register from './views/register';
 import Dashboard from './views/dashboard';
+import DashboardLanding from './components/dashboard/dashboardLanding';
 import Error from './views/error';
 import './assets/css/App.css';
 
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} /> 
-          <Route path="/dashboard" element={<Dashboard />} /> 
+          <Route path="/dashboard" element={<Dashboard component={<DashboardLanding />} />} /> 
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
