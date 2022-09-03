@@ -1,0 +1,18 @@
+#dbldg-wrapper {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#dbldg-button-row {
+  margin-bottom: .5em;
+}
+
+#dbldg-button-row * {
+  margin-right: 1em;
+}
