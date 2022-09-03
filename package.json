@@ -23,5 +23,8 @@
   "homepage": "https://github.com/yaelBrown/yaelMessage#readme",
   "dependencies": {
     "concurrently": "^7.3.0"
+  },
+  "devDependencies": {
+    "@iconify/react": "^3.2.2"
   }
 }
