@@ -1,4 +1,37 @@
 bootswatch lux theme - https://bootswatch.com/lux/
 reactstrap - https://reactstrap.github.io/?path=/story/home-installation--page
 
-learn useReducer - https://www.youtube.com/watch?v=kK_Wqx3RnHk
+client
+  learn useReducer - https://www.youtube.com/watch?v=kK_Wqx3RnHk
+
+  add data in innodb
+
+
+
+
+
+server 
+  setup mysql and connect to test controller
+
+  create models folders
+    mongo
+      chats_messages
+      chats_meta
+      sessions
+    
+    mysql
+      users
+      users_settings
+
+      (setup relational stuff)
+
+  create bearer token 
+
+  create session methods
+
+
+
+websocket
+  Setup websocket
+
+  send messages with websocket

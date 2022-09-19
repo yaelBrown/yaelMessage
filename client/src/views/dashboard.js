@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Axios from 'axios'
 import '../assets/css/dashboard.css'
 import LoadingPug from '../assets/img/running-pug.gif'
 import Navbar from '../components/dashboard/navbar'
