@@ -4,15 +4,15 @@ from flask_cors import CORS
 from config.mongoConn import mongoConn
 
 from controllers.testController import testController
-# from controllers.authenticationController import authenticationController
+from controllers.authenticationController import authenticationController
 # from controllers.userController import userController
 
 app = Flask(__name__)
 CORS(app)
 
 app.register_blueprint(testController, url_prefix='/api/test')
+app.register_blueprint(authenticationController, url_prefix='/api/auth')
 # app.register_blueprint(userController, url_prefix='/api/user')
-# app.register_blueprint(authenticationController, url_prefix='/api/auth')
 
 
 @app.route("/")
@@ -26,5 +26,4 @@ def websocket():
 
 
 if __name__ == "__main__":
-    print("Just use 'flask run'")
     app.run(port=5000, debug=True)
