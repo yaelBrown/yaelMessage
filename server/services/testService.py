@@ -8,7 +8,7 @@ class TestService:
         try:
             return mongo_collection.find_one({"test": "mongo-test"})["status"]
         except Exception as err:
-            return err
+            return str(err)
 
     def checkMysqlStatus():
         pass
