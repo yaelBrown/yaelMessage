@@ -11,14 +11,7 @@ client
 
 
 server 
-  setup mysql and connect to test controller
-
   create models folders
-    mongo
-      chats_messages
-      chats_meta
-      sessions
-    
     mysql
       users
       users_settings

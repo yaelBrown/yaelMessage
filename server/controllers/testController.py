@@ -14,8 +14,9 @@ def mongoTest():
     return {"msg": TestService.checkMongoStatus()}, 200
 
 
+@testController.route('/mysql', methods=['GET'])
 def mysqlTest():
-    pass
+    return {"msg": TestService.checkMysqlStatus()}, 200
 
 
 @testController.route('/all', methods=['GET'])
