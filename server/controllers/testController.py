@@ -23,7 +23,6 @@ def mysqlTest():
 def testAll():
     mongo = TestService.checkMongoStatus()
     mysql = TestService.checkMysqlStatus()
-    api = "ok"
 
     return {
         "mongo": mongo,
