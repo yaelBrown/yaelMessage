@@ -6,7 +6,7 @@ userController = Blueprint('userController', __name__)
 
 @userController.route('/', methods=['POST'])
 def registerUser():
-  data = request.get_json()
+  data = request.get_json()['data']
   if data["username"] == None or data["password"] == None or data["email"] == None:
     raise Exception("Invalid Information to create User")
   try: 

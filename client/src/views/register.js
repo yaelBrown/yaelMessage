@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+// import RegisterService from '../services/registerService';
+// import Api from '../api/api';
 import { useNavigate } from "react-router-dom"
 import '../assets/css/register.css'
 import LoadingPug from '../assets/img/running-pug.gif'
+
+class RegisterService {
+  async register(username, password, email) {
+    const config = {
+      url: process.env.API,
+      data: {
+        username,
+        password,
+        email
+      }
+    }
+    return await axios.post(config)
+  }
+}
 
 export default function Register() {
   const initialState = {
@@ -16,11 +33,26 @@ export default function Register() {
   const [registerForm, setRegisterForm] = useState(initialState)
 
   const handleNavigate = rte => navigate(`${rte}`)
-  const handleSubmit = () => console.log(registerForm)
   const handleChange = e => {
     const newRegisterForm = registerForm
     newRegisterForm[e.name] = e.value
     setRegisterForm(newRegisterForm)
+  }
+  const handleRegister = async () => {
+    if (registerForm.username !== "" || registerForm.password !== "" || registerForm.email !== "") {
+      setRegisterForm({ ...registerForm, isLoading: true, error: "" })
+
+      await axios.post(process.env.REACT_APP_API_URI + "api/user/", {
+        data: {
+          username: registerForm.username,
+          password: registerForm.password,
+          email: registerForm.email,
+        }
+      })
+        .then(res => res.data)
+        .then(() => setRegisterForm({ ...registerForm, isLoading: false }))
+        .catch(err => setRegisterForm({ ...registerForm, isLoading: false, error: err.message }))
+    }
   }
 
   const renderLoader = () => (registerForm.isLoading) ? "block" : "none"
@@ -35,7 +67,7 @@ export default function Register() {
         <input className="form-control form-control-sm register-inputs" type="text" placeholder="Email" name="email" onChange={(evt) => handleChange(evt.target)} />
       </div>
       <div id="register-button-row">
-        <button type="button" className="btn btn-primary btn-sm" name={registerForm.username} onClick={() => handleSubmit()} >Register</button>
+        <button type="button" className="btn btn-primary btn-sm" name={registerForm.username} onClick={() => handleRegister()} >Register</button>
         <button type="button" className="btn btn-secondary btn-sm" onClick={() => handleNavigate("/login")}>Login</button>
       </div>
       <div id="register-info-row">
