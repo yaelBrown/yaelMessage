@@ -26,3 +26,8 @@
 #login-error {
   color: red;
 }
+
+#login-error,
+#login-message {
+  margin-top: 1em;
+}

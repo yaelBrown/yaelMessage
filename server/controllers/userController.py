@@ -21,17 +21,15 @@ def registerUser():
         return {"err": str(err)}, 422
 
 
-@userController.route('/', methods=['GET'])
+@userController.route('/login', methods=['POST'])
 def loginUser():
     try:
         data = request.get_json()['data']
-        print(data)
         if data["password"] == None:
             raise Exception("Invalid Information to login User")
         if "username" not in data.keys() and "email" not in data.keys():
             raise Exception("You need a username or password to login user")
         if "username" in data.keys() and "email" not in data.keys():
-            print('login by username')
             out = UserService.loginUserByUsername(
                 None, data["username"], data["password"])
             if out == False:
