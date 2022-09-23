@@ -19,6 +19,7 @@ class UserService:
             return False
 
     def loginUserByUsername(self, username, password):
+        print("cookies")
         if username == "" or password == "":
             return False
         try:
@@ -30,20 +31,20 @@ class UserService:
             temp = res if bcrypt.checkpw(
                 bytes(password, 'utf-8'), bytes(res[2], 'utf-8')) else False
             if temp != False:
-              out = {
-                "id": res[0],
-                "username": res[1],
-                "password": res[2],
-                "email": res[3]
-              }
-              return out
-            else: 
-              return False
+                return {
+                    "id": res[0],
+                    "username": res[1],
+                    "password": res[2],
+                    "email": res[3]
+                }
+            else:
+                return False
         except Exception as err:
             print(str(err))
             return False
 
     def loginUserByEmail(self, email, password):
+        print("login by email")
         if email == "" or password == "":
             return False
         try:
@@ -52,17 +53,15 @@ class UserService:
             res = cursor.fetchone()
             if res == None:
                 return False
-            out = self._serializeFromMysql(res) if bcrypt.checkpw(
-                password, res[2]) else False
-            return out
+            temp = res if bcrypt.checkpw(
+                bytes(password, 'utf-8'), bytes(res[2], 'utf-8')) else False
+            if temp != False:
+                return {
+                    "id": res[0],
+                    "username": res[1],
+                    "password": res[2],
+                    "email": res[3]
+                }
         except Exception as err:
             print(str(err))
             return False
-
-    def _serializeFromMysql(self, mysqlTuple):
-        return {
-            "id": mysqlTuple[0],
-            "username": mysqlTuple[1],
-            "password": mysqlTuple[2],
-            "email": mysqlTuple[3]
-        }

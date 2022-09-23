@@ -25,24 +25,27 @@ def registerUser():
 def loginUser():
     try:
         data = request.get_json()['data']
+        print(data)
         if data["password"] == None:
             raise Exception("Invalid Information to login User")
-        if data["username"] == None and data["email"] is None:
+        if "username" not in data.keys() and "email" not in data.keys():
             raise Exception("You need a username or password to login user")
-        if data["username"]:
+        if "username" in data.keys() and "email" not in data.keys():
+            print('login by username')
             out = UserService.loginUserByUsername(
                 None, data["username"], data["password"])
             if out == False:
                 raise Exception("Unable to login user")
             del out['password']
             return {"msg": out}, 200
-        if data["email"]:
+        if "email" in data.keys() and "username" not in data.keys():
             out = UserService.loginUserByEmail(
                 None, data["email"], data["password"])
             if out == False:
                 raise Exception("Unable to login user")
             del out['password']
             return {"msg": out}, 200
+        raise Exception("Unable to login user")
     except Exception as err:
         print(str(err))
         return {"err": str(err)}, 400
