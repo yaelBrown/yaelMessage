@@ -52,7 +52,7 @@ export default function Register() {
       })
         .then(res => res.data)
         .then(res => {
-          setRegisterForm({ ...registerForm, isLoading: false, message: `Successfully Registered ${res.username}` })
+          setRegisterForm({ ...registerForm, isLoading: false, message: `Successfully Registered ${res.msg.username}` })
           setTimeout(() => {
             handleNavigate("/login")
           }, 3000)
