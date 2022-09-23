@@ -5,7 +5,6 @@ import bcrypt
 
 cursor = mysqlConn.cursor()
 
-
 class UserService:
     def registerUser(self, newUser: Users):
         try:
@@ -19,7 +18,6 @@ class UserService:
             return False
 
     def loginUserByUsername(self, username, password):
-        print("cookies")
         if username == "" or password == "":
             return False
         try:
@@ -44,7 +42,6 @@ class UserService:
             return False
 
     def loginUserByEmail(self, email, password):
-        print("login by email")
         if email == "" or password == "":
             return False
         try:
