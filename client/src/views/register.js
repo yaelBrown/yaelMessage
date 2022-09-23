@@ -26,6 +26,7 @@ export default function Register() {
     password: "",
     email: "",
     error: "",
+    message: "",
     isLoading: false
   }
   const navigate = useNavigate()
@@ -50,13 +51,19 @@ export default function Register() {
         }
       })
         .then(res => res.data)
-        .then(() => setRegisterForm({ ...registerForm, isLoading: false }))
+        .then(res => {
+          setRegisterForm({ ...registerForm, isLoading: false, message: `Successfully Registered ${res.username}` })
+          setTimeout(() => {
+            handleNavigate("/login")
+          }, 3000)
+        })
         .catch(err => setRegisterForm({ ...registerForm, isLoading: false, error: err.message }))
     }
   }
 
   const renderLoader = () => (registerForm.isLoading) ? "block" : "none"
   const renderError = () => (registerForm.error === "") ? "none" : "block"
+  const renderMessage = () => (registerForm.message === "") ? "none" : "block"
 
   return (
     <section id="register-wrapper">
@@ -73,6 +80,7 @@ export default function Register() {
       <div id="register-info-row">
         <img id="register-loading-pug" src={LoadingPug} alt="loading pug" style={{ display: renderLoader() }} />
         <small id="register-error" style={{ display: renderError() }}>{registerForm.error}</small>
+        <small id="register-message" style={{ display: renderMessage() }}>{registerForm.message}</small>
       </div>
     </section>
   )

@@ -31,3 +31,9 @@
 #register-error {
   color: red;
 }
+
+#register-loading-pug,
+#register-message,
+#register-error {
+  margin-top: 1em;
+}
