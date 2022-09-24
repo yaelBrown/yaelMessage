@@ -2,7 +2,7 @@ from config.mongoConn import mongoConn
 from config.mysqlConn import mysqlConn
 
 mongo_collection = mongoConn["test"]
-
+cursor = mysqlConn.cursor()
 
 class TestService:
     def checkMongoStatus():
@@ -13,7 +13,7 @@ class TestService:
 
     def checkMysqlStatus():
         try:
-            mysqlConn.execute("select * from test")
-            return mysqlConn.fetchall()[0]
+            cursor.execute("select * from test")
+            return cursor.fetchall()[0][0]
         except Exception as err:
             return str(err)
