@@ -33,7 +33,7 @@ export default function Login() {
       await axios.post(process.env.REACT_APP_API_URI + "api/user/login", {data})
         .then(res => res.data)
         .then(res => {
-          if (res.msg != undefined) {
+          if (res.msg !== undefined) {
             // set user to state
             setLoginForm({ ...loginForm, isLoading: false, message: `Welcome ${res.msg.username}!` })
             setTimeout(() => {

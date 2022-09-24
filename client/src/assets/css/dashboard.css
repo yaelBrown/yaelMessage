@@ -1,8 +1,26 @@
 #dashboard-wrapper-loading {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   margin: auto;
-  height: 35rem;
+  height: 40rem;
   width: 35rem;
+}
+
+#dashboard-progress {
+  height: 20px;
+  width: 50%;
+  border: 1px solid black;
+  border-top: none;
+  margin: auto auto 1em auto;
+}
+
+#dashboard-progress-bar {
+  height: 100%;
+  left: 0;
+  position: relative;
+  background-color: black;
+  width: 10%;
 }
 
 #dashboard-loading-pug {
